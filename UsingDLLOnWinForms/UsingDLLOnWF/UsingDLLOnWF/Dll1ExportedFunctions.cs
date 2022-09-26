@@ -17,7 +17,7 @@ namespace UsingDLLOnWF
         public static object InitFromLibrary(string LibPath, string ProcName)
         {
             //IntPtr pDll = NativeMethods.LoadLibraryW(LibPath);
-            IntPtr pDll = NativeMethods.LoadLibraryW(@"G:\Nikiforof\DLLs\Lab1C\x64\Debug\Lab1C.dll");
+            IntPtr pDll = NativeMethods.LoadLibraryW(@"G:\Nikiforof\DLLs\Lab1C\x64\Debug\Lab1C.dll"); //check
             if (IntPtr.Zero == pDll) { return null; }
 
             IntPtr pAddressOfFunctionToCall = NativeMethods.GetProcAddress(pDll, ProcName);
