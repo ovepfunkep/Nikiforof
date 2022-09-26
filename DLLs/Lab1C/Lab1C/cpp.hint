@@ -1,0 +1,2 @@
+#define LAB1C_API __declspec(dllexport)
+#define LAB1C_API __declspec(dllimport)
