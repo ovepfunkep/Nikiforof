@@ -8,13 +8,17 @@ namespace UsingDLLOnWF
 {
     class Dll1ExportedFunctions
     {
+        public static string pathToDLLC = @"E:\Projects\Nikiforof\UsingDLLOnWinForms\UsingDLLOnWF\x64\Debug\Lab1C.dll";
+        public static string pathToDLLLaz = @"E:\Projects\Nikiforof\UsingDLLOnWinForms\UsingDLLOnWF\x64\Debug\Lab1C.dll";
+        public static string mainPath;
+
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         public delegate int AdditionC(int val1, int val2);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-        public delegate int ReadTextFile(string FilePath);
+        public delegate int ReadTextFileC([MarshalAs(UnmanagedType.LPWStr)] string FilePath, out string Text, out int CountLines);
 
-        public static object InitFromLibrary(string LibPath, string ProcName)
+        public static object InitFromLibrary(string LibPath, string ProcName, Type type)
         {
             IntPtr pDll = NativeMethods.LoadLibrary(LibPath);
             if (IntPtr.Zero == pDll) { return null; }
@@ -25,7 +29,7 @@ namespace UsingDLLOnWF
             Object procedure = Marshal.GetDelegateForFunctionPointer
             (
             pAddressOfFunctionToCall,
-            typeof(AdditionC)
+            type
             );
             return procedure;
         }

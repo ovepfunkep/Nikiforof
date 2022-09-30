@@ -36,12 +36,12 @@ namespace UsingDLLOnWF
             // TBFilePath
             // 
             this.TBFilePath.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TBFilePath.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.TBFilePath.ForeColor = System.Drawing.SystemColors.MenuText;
             this.TBFilePath.Location = new System.Drawing.Point(12, 12);
             this.TBFilePath.Name = "TBFilePath";
+            this.TBFilePath.PlaceholderText = "File path...";
             this.TBFilePath.Size = new System.Drawing.Size(547, 34);
             this.TBFilePath.TabIndex = 0;
-            this.TBFilePath.Text = "File path...";
             // 
             // BtnFindCount
             // 
@@ -50,8 +50,9 @@ namespace UsingDLLOnWF
             this.BtnFindCount.Name = "BtnFindCount";
             this.BtnFindCount.Size = new System.Drawing.Size(190, 39);
             this.BtnFindCount.TabIndex = 1;
-            this.BtnFindCount.Text = "Line count =";
+            this.BtnFindCount.Text = "Result =";
             this.BtnFindCount.UseVisualStyleBackColor = true;
+            this.BtnFindCount.Click += new System.EventHandler(this.BtnFindCount_Click);
             // 
             // ReadTextFile
             // 
@@ -62,7 +63,7 @@ namespace UsingDLLOnWF
             this.Controls.Add(this.TBFilePath);
             this.Name = "ReadTextFile";
             this.Text = "ReadTextFile";
-            this.Deactivate += new System.EventHandler(this.ReadTextFile_Deactivate);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReadTextFile_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -84,7 +84,7 @@ namespace UsingDLLOnWF
             this.Controls.Add(this.label1);
             this.Name = "Addition";
             this.Text = "Addition";
-            this.Deactivate += new System.EventHandler(this.Addition_Deactivate);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Addition_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
