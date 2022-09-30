@@ -21,15 +21,15 @@ namespace UsingDLLOnWF
 
         private void BTFind_Click(object sender, EventArgs e)
         {
-            AdditionC AdditionC_Local = 
-                (AdditionC)InitFromLibrary(@"E:\Projects\Nikiforof\UsingDLLOnWinForms\UsingDLLOnWF\x64\Debug\Lab1C.dll",
-                "AdditionC");
-            if (int.TryParse(TextBoxVal1.Text.ToString(), out int value1) 
+            if (int.TryParse(TextBoxVal1.Text.ToString(), out int value1)
                 && int.TryParse(TextBoxVal2.Text.ToString(), out int value2))
-                BTFind.Text = AdditionC_Local(value1, value2).ToString();
+            {
+                AdditionC additionC = (AdditionC)InitFromLibrary(mainPath, "AdditionC", typeof(AdditionC));
+                BTFind.Text = additionC(value1, value2).ToString();
+            }
         }
 
-        private void Addition_Deactivate(object sender, EventArgs e)
+        private void Addition_FormClosed(object sender, FormClosedEventArgs e)
         {
             formParent.Show();
         }

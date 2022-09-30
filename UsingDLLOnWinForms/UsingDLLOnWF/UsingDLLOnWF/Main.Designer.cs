@@ -23,6 +23,7 @@ namespace UsingDLLOnWF
         {
             this.CBChooseFun = new System.Windows.Forms.ComboBox();
             this.BtnGo = new System.Windows.Forms.Button();
+            this.CBLanguage = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // CBChooseFun
@@ -30,28 +31,40 @@ namespace UsingDLLOnWF
             this.CBChooseFun.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBChooseFun.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CBChooseFun.FormattingEnabled = true;
-            this.CBChooseFun.Location = new System.Drawing.Point(93, 34);
+            this.CBChooseFun.Location = new System.Drawing.Point(29, 34);
             this.CBChooseFun.Name = "CBChooseFun";
             this.CBChooseFun.Size = new System.Drawing.Size(203, 36);
             this.CBChooseFun.TabIndex = 0;
-            this.CBChooseFun.SelectedIndexChanged += new System.EventHandler(this.CBChooseFun_SelectedIndexChanged);
             // 
             // BtnGo
             // 
-            this.BtnGo.Enabled = false;
-            this.BtnGo.Location = new System.Drawing.Point(93, 87);
+            this.BtnGo.Location = new System.Drawing.Point(29, 87);
             this.BtnGo.Name = "BtnGo";
-            this.BtnGo.Size = new System.Drawing.Size(203, 53);
+            this.BtnGo.Size = new System.Drawing.Size(326, 44);
             this.BtnGo.TabIndex = 1;
             this.BtnGo.Text = "Go!";
             this.BtnGo.UseVisualStyleBackColor = true;
             this.BtnGo.Click += new System.EventHandler(this.BtnGo_Click);
             // 
+            // CBLanguage
+            // 
+            this.CBLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBLanguage.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CBLanguage.FormattingEnabled = true;
+            this.CBLanguage.Items.AddRange(new object[] {
+            "C++",
+            "Lazarus"});
+            this.CBLanguage.Location = new System.Drawing.Point(238, 34);
+            this.CBLanguage.Name = "CBLanguage";
+            this.CBLanguage.Size = new System.Drawing.Size(117, 36);
+            this.CBLanguage.TabIndex = 2;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 164);
+            this.ClientSize = new System.Drawing.Size(384, 151);
+            this.Controls.Add(this.CBLanguage);
             this.Controls.Add(this.BtnGo);
             this.Controls.Add(this.CBChooseFun);
             this.Name = "Main";
@@ -64,6 +77,7 @@ namespace UsingDLLOnWF
 
         private System.Windows.Forms.ComboBox CBChooseFun;
         private System.Windows.Forms.Button BtnGo;
+        public System.Windows.Forms.ComboBox CBLanguage;
     }
 }
 

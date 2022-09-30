@@ -1,30 +1,9 @@
 ﻿//Тябин Иван 903б
 #include "pch.h"
-#include "WTypes.h"
 #include "fstream"
-#include "oleauto.h"
-#include "comutil.h"
-#include "chstring.h"
-#include "string.h"
-#include "comdef.h"
+#include "iostream"
+#include <string>
 using namespace std;
-using namespace _com_util;
-
-BOOL APIENTRY DllMain( HMODULE hModule,
-                       DWORD  ul_reason_for_call,
-                       LPVOID lpReserved
-                     )
-{
-    switch (ul_reason_for_call)
-    {
-    case DLL_PROCESS_ATTACH:
-    case DLL_THREAD_ATTACH:
-    case DLL_THREAD_DETACH:
-    case DLL_PROCESS_DETACH:
-        break;
-    }
-    return TRUE;
-}
 
 extern "C"
 {
@@ -35,8 +14,17 @@ extern "C"
     }
 
     //функция проверки TSV файла
-    __declspec(dllexport) int __stdcall ReadTextFile(string FileName)
+    __declspec(dllexport) int __stdcall ReadTextFileC(const char* FileName)
     { 
-        return 0;
+        int count = 0;
+        ifstream in(FileName);
+        if (in.is_open())
+        {
+            string line;
+            while (in >> line) ++count;
+        }
+        in.close();    
+        cout << FileName;
+        return count;
     }
 }

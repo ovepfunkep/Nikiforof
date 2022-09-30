@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static UsingDLLOnWF.Dll1ExportedFunctions;
 
 namespace UsingDLLOnWF
 {
@@ -22,41 +23,27 @@ namespace UsingDLLOnWF
         private void FillFunctionsVariety()
         {
             CBChooseFun.Items.Add("Addition");
-            CBChooseFun.Items.Add("Read .tsv file");
+            CBChooseFun.Items.Add("Count lines in file");
+            CBChooseFun.SelectedIndex = 0;
+            CBLanguage.SelectedIndex = 0;
         }
 
         private void BtnGo_Click(object sender, EventArgs e)
         {
-            switch (CBChooseFun.SelectedIndex)
-            {
-                case 0:
-                    Addition addition = new Addition(this);
-                    addition.Show();
-                    this.Hide();
-                    break;
-                case 1:
-                    ReadTextFile rdtxtfile = new ReadTextFile(this);
-                    rdtxtfile.Show();
-                    this.Hide();
-                    break;
-            }
-        }
+            mainPath = CBLanguage.SelectedItem.ToString() == "C#" ? pathToDLLC : pathToDLLLaz;
 
-        private List<string> FunctionsImported = new List<string> { };
-
-        private void CBChooseFun_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!FunctionsImported.Contains(CBChooseFun.SelectedItem.ToString()))
+            switch (CBChooseFun.SelectedItem.ToString())
             {
-                switch (CBChooseFun.SelectedItem.ToString()) 
-                {
-                    case "Addition":
-                        break;
-                    case "Read .tsv file":
-                        break;
-                }
-                FunctionsImported.Add(CBChooseFun.SelectedItem.ToString());
-                BtnGo.Enabled = true;
+                case "Addition":
+                    Addition additionForm = new Addition(this);
+                    this.Hide();
+                    additionForm.ShowDialog();
+                    break;
+                case "Count lines in file":
+                    ReadTextFile readTextFile = new ReadTextFile(this);
+                    this.Hide();
+                    readTextFile.ShowDialog();
+                    break;
             }
         }
     }
