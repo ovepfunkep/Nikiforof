@@ -22,7 +22,7 @@ namespace UsingDLLOnWF
         private void BTFind_Click(object sender, EventArgs e)
         {
             AdditionC AdditionC_Local = 
-                (AdditionC)InitFromLibrary(@"G:\Nikiforof\DLLs\Lab1C\Debug\Lab1C.dll",
+                (AdditionC)InitFromLibrary(@"E:\Projects\Nikiforof\UsingDLLOnWinForms\UsingDLLOnWF\x64\Debug\Lab1C.dll",
                 "AdditionC");
             if (int.TryParse(TextBoxVal1.Text.ToString(), out int value1) 
                 && int.TryParse(TextBoxVal2.Text.ToString(), out int value2))
