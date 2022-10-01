@@ -19,10 +19,10 @@ namespace UsingDLLOnWF
         }
 
         Form FormParent;
+        Dll1ExportedFunctions.ReadTextFile readTextFile = (Dll1ExportedFunctions.ReadTextFile)InitFromLibrary(mainPath, "ReadTextFile", typeof(Dll1ExportedFunctions.ReadTextFile));
 
         private void BtnFindCount_Click(object sender, EventArgs e)
         {
-            ReadTextFileC readTextFile = (ReadTextFileC)InitFromLibrary(mainPath, "ReadTextFileC", typeof(ReadTextFileC));
             BtnFindCount.Text = readTextFile(TBFilePath.Text, out string Text, out int CountLines).ToString();
         }
 

@@ -26,11 +26,13 @@ namespace UsingDLLOnWF
             CBChooseFun.Items.Add("Count lines in file");
             CBChooseFun.SelectedIndex = 0;
             CBLanguage.SelectedIndex = 0;
+            CBPlace.SelectedIndex = 1;
         }
 
         private void BtnGo_Click(object sender, EventArgs e)
         {
-            mainPath = CBLanguage.SelectedItem.ToString() == "C#" ? pathToDLLC : pathToDLLLaz;
+            mainPath = CBPlace.SelectedItem.ToString() == "VKI" ? VKIDir : HomeDir;
+            mainPath += CBLanguage.SelectedItem.ToString() == "C++" ? pathToDLLC : pathToDLLLaz;
 
             switch (CBChooseFun.SelectedItem.ToString())
             {

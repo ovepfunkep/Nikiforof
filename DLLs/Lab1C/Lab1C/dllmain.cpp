@@ -5,32 +5,62 @@
 #include <string>
 #include <vector>
 #include <WTypes.h>
+#include <comutil.h>
+#include <comdef.h>
 using namespace std;
 
-extern "C"
-{
-    //сложение
-    __declspec(dllexport) int __stdcall AdditionC(int val1, int val2)
-    {
-        return val1 + val2;
-    }
 
-    //функция проверки TSV файла
-    __declspec(dllexport) int __stdcall ReadTextFileC(LPCWSTR FileName, BSTR Text, int Count)
-    { 
-        Count = 0;
-        ifstream in(FileName);
-        if (in.is_open())
-        {
-            string line;
-            while (in >> line)
-            {
-                Count++;
-            }
-        }
-        else return -1;
-        in.close();
-
-        return Count > 0 ? 0 : -1;
+//функция подсчета элементов в строке .tsv
+static int CountElems(string line) {
+    int Count = 0;
+    int i = 0;
+    while (i < line.length()) {
+        while (line[i] != '\t' && i < line.length())
+            ++i;
+        Count++;
+        i++;
     }
+    return Count;
 }
+
+
+    
+
+
+
+
+        //сложение
+__declspec(dllexport) int __stdcall Addition_Debug(int val1, int val2)
+        {
+            return val1 + val2;
+        }
+
+        __declspec(dllexport) int __stdcall ReadTextFile(LPCWSTR FileName, BSTR* Text, int& Count)
+        {
+            Count = 0;
+            *Text = _com_util::ConvertStringToBSTR("");;
+            string TextTemp = "";
+            ifstream file(FileName);
+            if (file.is_open())
+            {
+                string line;
+                getline(file, line);
+                TextTemp += (line + '\n');
+                int CountFirst = CountElems(line);
+                if (CountFirst < 2) return -1;
+                while (getline(file, line))
+                {
+                    if (CountElems(line) == CountFirst)
+                    {
+                        TextTemp += (line + '\n');
+                        Count++;
+                    }
+                }
+            }
+            else return -1;
+            file.close();
+            const char* temp = TextTemp.c_str();
+            *Text = _com_util::ConvertStringToBSTR(temp);
+
+            return Count > 0 ? 0 : -1;
+        }

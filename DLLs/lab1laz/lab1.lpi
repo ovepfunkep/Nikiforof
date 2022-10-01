@@ -35,7 +35,7 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="lab1"/>
+      <Filename Value="project1"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
@@ -43,7 +43,6 @@
     </SearchPaths>
     <CodeGeneration>
       <RelocatableUnit Value="True"/>
-      <TargetCPU Value="x86_64"/>
     </CodeGeneration>
     <Linking>
       <Options>
