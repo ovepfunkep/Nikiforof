@@ -1,30 +1,32 @@
-﻿//Тябин Иван 903б
-#include "pch.h"
+#ifndef _DLL_H_
+#define _DLL_H_
 #include "fstream"
 #include "iostream"
-#include <string>
+#include <string.h>
 #include <vector>
 #include <WTypes.h>
 #include <comutil.h>
 #include <comdef.h>
 using namespace std;
 
+#if BUILDING_DLL
+#define DLLIMPORT __declspec(dllexport)
+#else
+#define DLLIMPORT __declspec(dllimport)
+#endif
 
-//функция подсчета элементов в строке .tsv
-static int CountElems(string line) {
-    int Count = 0;
-    int i = 0;
-    while (i < line.length()) {
-        while (line[i] != '\t' && i < line.length())
-            ++i;
-        Count++;
-        i++;
-    }
-    return Count;
-}
+class DLLIMPORT DllClass
+{
+	public:
+		DllClass();
+		virtual ~DllClass();
+		void HelloWorld();
+};
+
+#endif
+
 
 extern "C" {
-    //сложение
     __declspec(dllexport) int __stdcall Addition_Debug(int val1, int val2)
     {
         return val1 + val2;
@@ -34,7 +36,9 @@ extern "C" {
     {
         Count = 0;
         *Text = _com_util::ConvertStringToBSTR("");;
-        string TextTemp = "";
+    	string TextTemp = "";
+    	//string FFileName = FileName;
+    	/*
         ifstream file(FileName);
         if (file.is_open())
         {
@@ -56,7 +60,7 @@ extern "C" {
         file.close();
         const char* temp = TextTemp.c_str();
         *Text = _com_util::ConvertStringToBSTR(temp);
-
+/**/
         return Count > 0 ? 0 : -1;
     }
 }
