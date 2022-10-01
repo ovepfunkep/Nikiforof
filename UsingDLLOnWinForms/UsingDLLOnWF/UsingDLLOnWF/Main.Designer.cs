@@ -24,6 +24,7 @@ namespace UsingDLLOnWF
             this.CBChooseFun = new System.Windows.Forms.ComboBox();
             this.BtnGo = new System.Windows.Forms.Button();
             this.CBLanguage = new System.Windows.Forms.ComboBox();
+            this.CBPlace = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // CBChooseFun
@@ -59,11 +60,25 @@ namespace UsingDLLOnWF
             this.CBLanguage.Size = new System.Drawing.Size(117, 36);
             this.CBLanguage.TabIndex = 2;
             // 
+            // CBPlace
+            // 
+            this.CBPlace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBPlace.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CBPlace.FormattingEnabled = true;
+            this.CBPlace.Items.AddRange(new object[] {
+            "Home",
+            "VKI"});
+            this.CBPlace.Location = new System.Drawing.Point(29, 7);
+            this.CBPlace.Name = "CBPlace";
+            this.CBPlace.Size = new System.Drawing.Size(127, 21);
+            this.CBPlace.TabIndex = 3;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 151);
+            this.Controls.Add(this.CBPlace);
             this.Controls.Add(this.CBLanguage);
             this.Controls.Add(this.BtnGo);
             this.Controls.Add(this.CBChooseFun);
@@ -78,6 +93,7 @@ namespace UsingDLLOnWF
         private System.Windows.Forms.ComboBox CBChooseFun;
         private System.Windows.Forms.Button BtnGo;
         public System.Windows.Forms.ComboBox CBLanguage;
+        private System.Windows.Forms.ComboBox CBPlace;
     }
 }
 
