@@ -18,7 +18,7 @@ namespace UsingDLLOnWF
         public delegate int Addition(int val1, int val2);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-        public delegate int ReadTextFile([MarshalAs(UnmanagedType.LPWStr)] string FileName, [MarshalAs(UnmanagedType.BStr)] out string Text, out int Count);
+        public delegate int ReadTextFile([MarshalAs(UnmanagedType.LPWStr)] string FilePath, out string Text, out int CountLines);
 
         public static object InitFromLibrary(string LibPath, string ProcName, Type type)
         {
