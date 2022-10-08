@@ -8,10 +8,10 @@ namespace UsingDLLOnWF
 {
     class Dll1ExportedFunctions
     {
-        public static string HomeDir = @"E:\Projects\";
-        public static string VKIDir = @"G:\";
-        public static string pathToDLLC = @"Nikiforof\UsingDLLOnWinForms\UsingDLLOnWF\Debug\Lab1C.dll";
-        public static string pathToDLLLaz = @"Nikiforof\DLLs\lab1laz\lab1.dll";
+        public static string HomeDir = @"E:\Projects\Nikiforof\";
+        public static string VKIDir = @"G:\Nikiforof\";
+        public static string pathToDLLC = @"UsingDLLOnWinForms\UsingDLLOnWF\x64\Debug\Lab1C.dll";
+        public static string pathToDLLLaz = @"DLLs\lab1laz\project1.dll";
         public static string mainPath;
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]

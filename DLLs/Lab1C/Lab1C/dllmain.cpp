@@ -9,8 +9,7 @@
 #include <comdef.h>
 using namespace std;
 
-
-//функция подсчета элементов в строке .tsv
+//подсчет элементов
 static int CountElems(string line) {
     int Count = 0;
     int i = 0;
@@ -25,11 +24,12 @@ static int CountElems(string line) {
 
 extern "C" {
     //сложение
-    __declspec(dllexport) int __stdcall Addition_Debug(int val1, int val2)
+    __declspec(dllexport) int __stdcall Addition(int val1, int val2)
     {
         return val1 + val2;
     }
 
+    //функция подсчета элементов в строке .tsv
     __declspec(dllexport) int __stdcall ReadTextFile(LPCWSTR FileName, BSTR* Text, int& Count)
     {
         Count = 0;
